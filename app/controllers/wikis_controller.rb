@@ -1,4 +1,5 @@
 class WikisController < ApplicationController
+  
   def index
     @wikis = Wiki.all
   end
@@ -33,6 +34,8 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    
+    authorize @wiki
  
     if @wiki.save
       flash[:notice] = "Wiki was updated."
@@ -53,5 +56,5 @@ class WikisController < ApplicationController
        flash.now[:alert] = "There was an error deleting the wiki."
        render :show
      end
-   end
+  end
 end
