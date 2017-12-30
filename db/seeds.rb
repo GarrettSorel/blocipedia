@@ -1,15 +1,35 @@
 require 'random_data'
+require 'faker'
+
+# Create Users
+10.times do
+  User.create!(
+   email: Faker::Internet.email,
+   password: Faker::Internet.password(10),
+  )
+end
+
+# Create Users
+  User.create!(
+   email: 'admin@admin.com',
+   password: 'admin123!',
+  )
+  
+   users = User.all
 
  # Create Wikis
  50.times do
- # #1
    Wiki.create!(
- # #2
-     title:  RandomData.random_sentence,
-     body:   RandomData.random_paragraph
+     title:  Faker::WorldOfWarcraft.quote,
+     body:   Faker::WorldOfWarcraft.quote,
+     private: false,
+     user: users.sample
    )
  end
+ 
+
  wikis = Wiki.all
  
  puts "Seed finished"
  puts "#{Wiki.count} wikis created"
+ puts "#{User.count} users created"
