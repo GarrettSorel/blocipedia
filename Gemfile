@@ -46,7 +46,11 @@
  end
  
  gem 'bootstrap-sass'
+ 
+ gem 'figaro'
 
  gem 'devise'
  
  gem 'pundit'
+ 
+ gem 'stripe'
