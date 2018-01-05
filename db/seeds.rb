@@ -22,7 +22,7 @@ end
    Wiki.create!(
      title:  Faker::WorldOfWarcraft.quote,
      body:   Faker::WorldOfWarcraft.quote,
-     private: false,
+     private: true,
      user: users.sample
    )
  end

@@ -3,6 +3,7 @@
 </div>
 <h1>All Wikis</h1>
 <% @wikis.each do |wiki| %>
+ <% if (wiki.private == nil || wiki.private == false) && current_user.standard? %>
   <div class="media">
      <div class="media-body">
        <h4 class="media-heading">
@@ -10,4 +11,13 @@
        </h4>
      </div>
    </div>
+  <% elsif (wiki.private == true || wiki.private == nil) && (current_user.admin? || current_user.premium?) %>
+  <div class="media">
+     <div class="media-body">
+       <h4 class="media-heading">
+         <%= link_to wiki.title, wiki %>
+       </h4>
+     </div>
+   </div>
+   <% end %>
 <% end %>
