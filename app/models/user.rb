@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   
   has_many :wikis, dependent: :destroy
+  has_many :collaborators, dependent: :destroy
   
   before_save { self.role ||= :standard }
   
